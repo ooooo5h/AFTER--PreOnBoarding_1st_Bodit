@@ -25,6 +25,11 @@ const createUser = async (userDto) => {
   await userDao.createUser(userDto);
 };
 
+const getAllUsers = async () => {
+  return await userDao.getAllUsers();
+};
+
 module.exports = {
   createUser,
+  getAllUsers,
 };

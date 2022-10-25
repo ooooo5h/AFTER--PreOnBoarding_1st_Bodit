@@ -9,7 +9,7 @@ const createUser = async (req, res) => {
     }
 
     await userService.createUser(userDto);
-    return res.status(201).json({ message: "SIGN_UP_SUCCESS " });
+    return res.status(201).json({ message: "SIGN_UP_SUCCESS" });
   } catch (err) {
     console.log(err);
     return res
@@ -18,6 +18,14 @@ const createUser = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  const result = await userService.getAllUsers();
+  return res
+    .status(200)
+    .json({ message: "GET_ALL_USERS", data: result });
+};
+
 module.exports = {
   createUser,
+  getAllUsers,
 };

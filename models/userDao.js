@@ -34,7 +34,26 @@ const createUser = async (userDto) => {
   );
 };
 
+/**
+ * 기능 : 회원 전체 조회
+ */
+const getAllUsers = async () => {
+  const [user] = await pool.query(
+    `
+    SELECT 
+        id, name, birth, height, phone
+    FROM 
+        users
+    WHERE
+        deleted = ?
+    `,
+    [false],
+  );
+  return user;
+};
+
 module.exports = {
   getUserByPhone,
   createUser,
+  getAllUsers,
 };
